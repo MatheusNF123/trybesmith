@@ -14,8 +14,6 @@ export default class LoginModel {
     const query = 'SELECT * FROM Trybesmith.Users WHERE username=? AND password=?'; 
     const [[result]] = await this
       .conn.execute<RowDataPacket[] &(IUser[] | undefined)>(query, [username, password]);
-
-    console.log(`log antes do retorno da model ${JSON.stringify(result)}`);
       
     return result;
   }
