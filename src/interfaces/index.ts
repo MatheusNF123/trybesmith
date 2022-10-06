@@ -5,6 +5,7 @@ export interface IProduct {
 }
 
 export interface IUser {
+  id?: number,
   username: string,
   classe: string,
   level: number,
@@ -19,4 +20,9 @@ export interface IOrder {
   id: number,
   userId: string,
   productsIds: number[]
+}
+
+export interface ILogin {
+  username: string,
+  password: string
 }

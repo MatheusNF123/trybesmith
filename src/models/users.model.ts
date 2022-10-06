@@ -1,5 +1,5 @@
-import { Pool, ResultSetHeader } from 'mysql2/promise';
-import { IUser } from '../interfaces/index';
+import { Pool, ResultSetHeader /* RowDataPacket */ } from 'mysql2/promise';
+import { IUser/* ILogin */ } from '../interfaces/index';
 import connection from './connection';
 
 export default class UserModel {
@@ -20,9 +20,11 @@ export default class UserModel {
     return insertId;
   }
 
-  // async findAll(): Promise<IProduct[]> {
-  //   const query = 'SELECT * FROM Trybesmith.Products'; 
-  //   const [products] = await this.conn.execute<RowDataPacket[] & IProduct[] >(query);
-  //   return products;
+  // async findLogin(body: ILogin): Promise<IUser> {
+  //   const { username, password } = body;
+  //   const query = 'SELECT INTO Trybesmith.Users WHERE username = ? and password = ? '; 
+  //   const [[user]] = await this
+  //     .conn.execute<RowDataPacket[] & IUser[] >(query, [username, password]);
+  //   return user;
   // }
 }
