@@ -15,3 +15,8 @@ export interface IToken {
   id?: number,
   username: string
 }
+export interface IOrder {
+  id: number,
+  userId: string,
+  productsIds: number[]
+}
