@@ -13,4 +13,9 @@ export default class ProductController {
     const produto = await this.service.create(req.body);
     res.status(201).json(produto);
   };
+
+  findAll = async (req: Request, res: Response): Promise<void> => {
+    const produtos = await this.service.findAll();
+    res.status(200).json(produtos);
+  };
 }
