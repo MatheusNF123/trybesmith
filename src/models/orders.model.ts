@@ -24,11 +24,4 @@ export default class OderModel {
     const [{ insertId }] = await this.conn.execute<ResultSetHeader>(query, [id]);
     return insertId;
   }
-
-  async updateProduct(idProduct: number, idOrder: number): Promise<number> {
-    const query = 'UPDATE Trybesmith.Products SET orderId = ? WHERE id = ?'; 
-    const [{ affectedRows }] = await this
-      .conn.execute<ResultSetHeader>(query, [idOrder, idProduct]);
-    return affectedRows;
-  }
 }

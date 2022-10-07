@@ -9,6 +9,5 @@ const orderController = new OrderController();
 
 router.get('/', orderController.findAll);
 router.post('/', auth, validateBodyProductId, orderController.createOrder);
-// router.get('/', productController.findAll);
 
 export default router;

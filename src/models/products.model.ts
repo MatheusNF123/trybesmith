@@ -21,4 +21,11 @@ export default class ProductModel {
     const [products] = await this.conn.execute<RowDataPacket[] & IProduct[] >(query);
     return products;
   }
+
+  public async updateProduct(idProduct: number, idOrder: number): Promise<number> {
+    const query = 'UPDATE Trybesmith.Products SET orderId = ? WHERE id = ?'; 
+    const [{ affectedRows }] = await this
+      .conn.execute<ResultSetHeader>(query, [idOrder, idProduct]);
+    return affectedRows;
+  }
 }

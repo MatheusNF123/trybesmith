@@ -19,12 +19,4 @@ export default class UserModel {
 
     return insertId;
   }
-
-  // async findLogin(body: ILogin): Promise<IUser> {
-  //   const { username, password } = body;
-  //   const query = 'SELECT INTO Trybesmith.Users WHERE username = ? and password = ? '; 
-  //   const [[user]] = await this
-  //     .conn.execute<RowDataPacket[] & IUser[] >(query, [username, password]);
-  //   return user;
-  // }
 }
