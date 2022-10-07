@@ -36,9 +36,7 @@ const validateBodyProductId = (req: Request, _res: Response, next:NextFunction) 
   if (error?.message.includes(isrequired)) throw new CustomError(error.message, 400);
   
   if (error) {
-    throw new CustomError(error
-      .message.includes('does not contain 1') 
-      ? '"productsIds" must include only numbers' : error.message, 422);
+    throw new CustomError(error.message, 422);
   }
   
   next();

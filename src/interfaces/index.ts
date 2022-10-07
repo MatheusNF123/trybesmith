@@ -41,3 +41,10 @@ export interface IProductId {
 export interface ITokenPayload {
   id: number,
 }
+
+// export interface IDecode {
+//   id: number,
+// }
+// export interface UserResquest extends Request {
+//   user: IDecode,
+// }

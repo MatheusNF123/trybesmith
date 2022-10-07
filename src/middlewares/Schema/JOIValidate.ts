@@ -23,7 +23,7 @@ const joiValidateBodyUsers = (body: IUser) => Joi.object({
     'string.empty': '"classe" is required',
   }),
   level: Joi.number().min(1).required().messages({
-    'number:min': '"level" must be greater than or equal to 1',
+    'number.min': '"level" must be greater than or equal to 1',
     'string.empty': '"password" is required',
   }),
   password: Joi.string().min(8).required().messages({
@@ -32,13 +32,13 @@ const joiValidateBodyUsers = (body: IUser) => Joi.object({
 }).validate(body);
 
 const joiValidateBodyProductId = (body: IProductId) => Joi.object({
-  productsIds: Joi.array().required().items(
-    Joi.number().required(),
-  )
+  productsIds: Joi.array().items(Joi.number().messages({
+    'array.empty': '"productsIds" must include only numbers',
+  })).min(1).required()
     .messages({
-      'array:min': '"productsIds" must include only numbers',
-      'any:required': '"productsIds" must include only numbers',
+      'array.min': '"productsIds" must include only numbers',
     }),
+  payload: Joi.any(),
 
 }).validate(body);
 

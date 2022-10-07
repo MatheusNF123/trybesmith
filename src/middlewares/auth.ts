@@ -14,9 +14,10 @@ const authToken = (req:Request, _res:Response, next:NextFunction): void => {
   }
 
   try {
-    jwt.verify(authorization, secretKey);
+    const verificaToken = jwt.verify(authorization, secretKey);
         
-    // req.params = verificaToken;
+    req.body.payload = verificaToken;
+    
     next();
   } catch (error) {
     throw new CustomError('Invalid token', 401);
