@@ -1,6 +1,7 @@
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
 import { IToken } from '../interfaces';
+// import CustomError from './CustomError';
 
 dotenv.config();
 

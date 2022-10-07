@@ -1,5 +1,5 @@
 import Joi from 'joi';
-import { ILogin, IProduct, IUser } from '../../interfaces';
+import { ILogin, IProduct, IProductId, IUser } from '../../interfaces';
 
 const validateBody = (body: ILogin) => Joi.object({
   username: Joi.string().required(),
@@ -31,5 +31,16 @@ const joiValidateBodyUsers = (body: IUser) => Joi.object({
   }),
 }).validate(body);
 
-export { joiValidateBodyProducts, joiValidateBodyUsers };
+const joiValidateBodyProductId = (body: IProductId) => Joi.object({
+  productsIds: Joi.array().required().items(
+    Joi.number().required(),
+  )
+    .messages({
+      'array:min': '"productsIds" must include only numbers',
+      'any:required': '"productsIds" must include only numbers',
+    }),
+
+}).validate(body);
+
+export { joiValidateBodyProducts, joiValidateBodyUsers, joiValidateBodyProductId };
 export default validateBody;
