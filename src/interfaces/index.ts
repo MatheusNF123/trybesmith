@@ -1,3 +1,6 @@
+import { Request } from 'express';
+import { JwtPayload } from 'jsonwebtoken';
+
 export interface IProduct {
   id?: number,
   name: string,
@@ -27,24 +30,18 @@ export interface ILogin {
   password: string
 }
 
-export interface IPayload {
-  username: string,
-  id: number,
-  iat: number,
-  exp: number
-}
-
 export interface IProductId {
   productsIds: number[]
 }
 
-export interface ITokenPayload {
-  id: number,
-}
-
 // export interface IDecode {
 //   id: number,
+//   username: string
 // }
-// export interface UserResquest extends Request {
-//   user: IDecode,
-// }
+export interface UserResquest extends Request {
+  user?: JwtPayload,
+}
+
+export interface TypedRequestBody<T> extends Express.Request {
+  user: T
+}

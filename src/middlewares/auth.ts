@@ -1,13 +1,14 @@
-import { Request, Response, NextFunction } from 'express';
-import jwt from 'jsonwebtoken';
+import { /* Request */ Response, NextFunction } from 'express';
+import jwt, { JwtPayload } from 'jsonwebtoken';
 import dotenv from 'dotenv';
 import CustomError from '../helpers/CustomError';
+import { UserResquest } from '../interfaces';
 
 dotenv.config();
 
 const secretKey = process.env.JWT_SECRET || 'secret';
 
-const authToken = (req:Request, _res:Response, next:NextFunction): void => {
+const authToken = (req:UserResquest, _res:Response, next:NextFunction): void => {
   const { authorization } = req.headers;
   if (!authorization) {
     throw new CustomError('Token not found', 401);
@@ -16,7 +17,7 @@ const authToken = (req:Request, _res:Response, next:NextFunction): void => {
   try {
     const verificaToken = jwt.verify(authorization, secretKey);
         
-    req.body.payload = verificaToken;
+    req.user = verificaToken as JwtPayload;
     
     next();
   } catch (error) {
